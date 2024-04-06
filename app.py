@@ -1,8 +1,6 @@
 import base64
 import os
 from flask import Flask, request, render_template, send_file
-from api.webhook import Webhook
-from api import cdn
 import io
 
 app = Flask(__name__)
