@@ -31,5 +31,3 @@ def download():
     data = request.data
     data = cdn.process_file_data(data)
     return cdn.download_links(data["file_bytes"])
-
-app.run(debug=True, port=80)
