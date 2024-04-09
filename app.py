@@ -36,4 +36,4 @@ def download(url):
         else:
             return "Add start/end arguments!"
     except:
-        return "Add start/end arguments!"
+        return renew_link(url)
