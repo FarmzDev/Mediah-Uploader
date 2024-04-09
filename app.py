@@ -35,5 +35,5 @@ def download(url):
                 return (f"Error: {response.status_code} - {response.reason}")
         else:
             return "Add start/end arguments!"
-    except:
-        return renew_link(url)
+    except Exception as e:
+        return e
