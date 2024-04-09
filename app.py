@@ -36,4 +36,4 @@ def download(url):
         else:
             return "Add start/end arguments!"
     except Exception as e:
-        return e
+        return "error"
