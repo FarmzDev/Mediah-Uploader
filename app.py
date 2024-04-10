@@ -29,6 +29,7 @@ def download(url):
         end = str(int(request.args.get("end"))-1)
         headers = {'Range': f'bytes={start}-{end}'}
         if start and end:
+            return renew_link(url)
             response = requests.get(renew_link(url), headers=headers)
             if response.status_code == 206:
                 return response.content
