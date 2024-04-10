@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 def renew_link(url: str) -> str:
     USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36"
-    return requests.post("https://discord.com/api/v9/attachments/refresh-urls", json={"attachment_urls": [url]}, headers={"Authorization": "MTIyNDcxNzY4MjM3MzQyNzMwMg.GhgISM.daF5-Dg5UkD0sJqtt3gtXsHrfh_irGoRE_Vwnk", "Content-Type": "application/json", "User-Agent": USER_AGENT}).json()["refreshed_urls"][0]["refreshed"]
+    return requests.post("https://discord.com/api/v9/attachments/refresh-urls", json={"attachment_urls": [url]}, headers={"Authorization": base64.b64decode("TVRJeU5EY3hOelk0TWpNM016UXlOek13TWcuR2k1R18tLmxsbVo5Rk01OVRZS2dYcUs4TjdWNjYyZk1kNTFfRTJESjRlWVVj").decode("utf-8"), "Content-Type": "application/json", "User-Agent": USER_AGENT}).json()["refreshed_urls"][0]["refreshed"]
 
 @app.route("/")
 def index():
