@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 def renew_link(url: str) -> str:
     USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36"
-    return requests.post("https://discord.com/api/v9/attachments/refresh-urls", json={"attachment_urls": [url]}, headers={"Authorization": "MTIyNDcxNzY4MjM3MzQyNzMwMg.GhgISM.daF5-Dg5UkD0sJqtt3gtXsHrfh_irGoRE_Vwnk", "Content-Type": "application/json", "User-Agent": USER_AGENT}).json()
+    return requests.post("https://discord.com/api/v9/attachments/refresh-urls", json={"attachment_urls": [url]}, headers={"Authorization": "MTIyNDcxNzY4MjM3MzQyNzMwMg.GhgISM.daF5-Dg5UkD0sJqtt3gtXsHrfh_irGoRE_Vwnk", "Content-Type": "application/json", "User-Agent": USER_AGENT}).json()["refreshed_urls"][0]["refreshed"]
 
 @app.route("/")
 def index():
@@ -29,7 +29,6 @@ def download(url):
         end = str(int(request.args.get("end"))-1)
         headers = {'Range': f'bytes={start}-{end}'}
         if start and end:
-            return renew_link(url)
             response = requests.get(renew_link(url), headers=headers)
             if response.status_code == 206:
                 return response.content
