@@ -24,6 +24,7 @@ def download_page():
 
 @app.route("/api/download/<path:url>", methods=["GET"])
 def download(url):
+    url = url.replace("https:/cdn", "https://cdn").replace("http:/cdn", "http://cdn")
     start = request.args.get("start")
     end = str(int(request.args.get("end"))-1)
     headers = {'Range': f'bytes={start}-{end}'}
